@@ -25,4 +25,18 @@ Download the repository from **Code → Download ZIP** or clone it. Give your as
 
 **Where do the files live?** A file uploaded through Bubble's uploader starts in that app's file storage. A newly generated file starts on fal. To retain it, the workflow copies the file into Bubble and saves the returned Bubble file reference on the owning record. You can then find it under **Data → File manager** in the matching Development or Live environment. A database field can also hold a remote URL, so seeing an image in a field alone doesn't tell you who hosts it. [Storage guide](docs/plugin-and-storage.md#where-the-bytes-live)
 
-By **The Wise Bubbler**. This repository contains instructions and public example settings. Each target app needs its own workflow and privacy checks, and fal charges the account that submits a live generation.
+This repository contains instructions and public example settings. Each target app needs its own workflow and privacy checks, and fal charges the account that submits a live generation.
+
+## Want me to build it with you?
+
+I’m Shua Klein, The Wise Bubbler. I wrote this repo so you can build the workflow yourself. If you want a second pair of eyes or someone to deliver the app, here’s what I charge in USD.
+
+| What you need | Price |
+| --- | --- |
+| A one-hour call to work through your idea or a blocker | $100 |
+| Integrate and test a media workflow in an existing Bubble app | $500 |
+| Build a complete Bubble app with one major integration | From $2,000. Allow about three weeks from kickoff. |
+| An extra feature in that build | $500 each, once |
+| Ongoing management after handoff | Optional, $1,000/month |
+
+If you’ve already described the app to your assistant, ask it to **turn our conversation into a project brief and help me fill in Shua’s estimator**. You can see the estimate first and submit the brief if you’d like me to follow up. [Get a project estimate](https://forms.badabingapp.cc/wisebubbler/bubble-project-estimate)
