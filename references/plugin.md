@@ -1,6 +1,6 @@
 # BYOK plugin contract
 
-The connector runs server actions through `@fal-ai/client`. The current local contract snapshot is **0.3.0**, with SDK **1.10.1**. It is a reference for this plugin, not a promise about whatever version a customer has installed.
+**Generative Media with fal AI** runs server actions through `@fal-ai/client`. The first Bubble marketplace release is **1.0.0**. The local contract snapshot for that release is **0.3.0**, with SDK **1.10.1**. Inspect the installed version before wiring an app. [Marketplace listing](https://bubble.io/plugin/generative-media-with-fal-ai-1789043147994x526977149156458500)
 
 Read [plugin-contract.json](plugin-contract.json) for stable action/field IDs, typed returns and the core Model Settings element. The file is a compact subset of the authored contract. The large model dropdown snapshot and business-intro pipeline are deliberately excluded. Runtime MCP action IDs and property names must be resolved from the installed app; these contract IDs are not MCP payloads.
 

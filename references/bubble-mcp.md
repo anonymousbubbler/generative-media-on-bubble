@@ -30,4 +30,4 @@ On the next request, verify these references against the current app and reuse t
 
 ## Missing capabilities
 
-Name the specific missing step and continue independent work. For example, prepare the workflow while the user enters a private key, or ask them to install an unavailable testing plugin. Never claim that a connected service guarantees every operation is permitted. This starter uses the official MCP surface and intentionally includes no undocumented editor injection runtime.
+Name the specific missing step and continue independent work. For example, prepare the workflow while the user enters a private key, or share the marketplace link if the app is missing the connector. Never claim that a connected service guarantees every operation is permitted. This starter uses the official MCP surface and intentionally includes no undocumented editor injection runtime.

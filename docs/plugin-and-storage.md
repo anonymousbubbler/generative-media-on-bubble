@@ -12,7 +12,7 @@ Use this reference to wire **Generate**, **Check result**, and **Save** in a Bub
 | fal | Run the requested endpoint, track the queue request and return the model output. fal bills the account associated with the key. |
 | Your Bubble app | Decide who may submit, which models and limits they can use, who owns a job and which outputs to retain. Database fields record the job and file URLs. |
 
-This guide covers the authored **0.3.0 BYOK contract**, built with `@fal-ai/client@1.10.1`. Check your installation for these action and field names. This repository supplies the integration guide and contract. Installing the Bubble connector is a separate step. A marketplace release or access to the full plugin source requires its own confirmed listing or distribution terms. [fal key authentication](https://fal.ai/docs/documentation/model-apis/authentication/key-based)
+Bubble published **Generative Media with fal AI v1.0.0** with the authored **0.3.0 BYOK contract** and `@fal-ai/client@1.10.1`. The marketplace version is the number to use for installation. [Bubble listing](https://bubble.io/plugin/generative-media-with-fal-ai-1789043147994x526977149156458500) · [fal key authentication](https://fal.ai/docs/documentation/model-apis/authentication/key-based)
 
 ## From button click to saved job
 

@@ -2,7 +2,7 @@
 
 Use an AI assistant and Bubble MCP to add image, video or audio generation to an existing Bubble app. Start with a feature your users need: a shop owner uploads a photo and gets three listing images, a teacher saves narration to a lesson, or a designer turns two frames into a product video. The guides show the assistant how to fit that feature into the app's existing pages, permissions and records.
 
-**Try the finished video.** The demo plays a saved 15-second FLUX 3 Max shot, shows both reference frames, and includes the exact generation prompt. Playing it uses no generation credits. [Open the Bubble demo](https://fal-plugin-test.bubbleapps.io/version-test/video_studio) · [Read the worked example](examples/flux-pullback/README.md)
+**Try the saved demos.** Watch a cinematic shot in Shiggsfield, compare product photos in OpenCanvas, or play two narrations in Soundloom. These Bubble pages use saved files and cost visitors no generation credits. [Open the gallery](https://fal-plugin-test.bubbleapps.io/version-test/studio_gallery) · [See the 15-second video recipe](examples/flux-pullback/README.md)
 
 ## Start with this prompt
 
@@ -10,7 +10,7 @@ Use an AI assistant and Bubble MCP to add image, video or audio generation to an
 
 Download the repository from **Code → Download ZIP** or clone it. Give your assistant the folder, or attach the relevant Markdown guides and ask it to read the root skill. Connect Bubble MCP to an account with editor access. Connect fal separately in ChatGPT if you want to prototype there. The running Bubble app uses its own server-side key. [Skill](SKILL.md) · [Bubble setup and first integration](docs/bubble-integration.md) · [fal key setup](docs/fal-setup.md)
 
-**Plugin availability.** The Wise Bubbler bring-your-own-key plugin, **fal AI Reliable Queue**, is a testing draft as of November 18, 2026. It runs in the demo app. A public installable version could not be resolved in Bubble's marketplace. If you have testing access, use that installation. Other builders can use the skill, model guidance and playback example immediately; the plugin-specific generation steps require an accessible plugin version. Installing this repository gives the assistant instructions. Installing the connector in a Bubble app is a separate step.
+**Install the free web plugin.** The Wise Bubbler published **Generative Media with fal AI v1.0.0** under MIT on November 18, 2026. Choose your app on the marketplace listing, install the plugin, then add your own fal key in the private plugin settings. fal bills your account for generation. [Install on Bubble](https://bubble.io/plugin/generative-media-with-fal-ai-1789043147994x526977149156458500) · [Set up the key](docs/fal-setup.md)
 
 ## What should the agent read?
 
