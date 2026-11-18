@@ -1,0 +1,1001 @@
+{
+  "contract_subset_version": "1.0.0",
+  "prepared_on": "2026-11-17",
+  "plugin_id": "1789043147994x526977149156458500",
+  "plugin_contract_version": "0.3.0",
+  "sdk": "@fal-ai/client@1.10.1",
+  "availability": "BYOK testing draft; confirm marketplace availability and installed contract.",
+  "private_key_setting": "fal_api_key",
+  "server_only": true,
+  "endpoint_precedence": "A nonempty endpoint_id overrides the static model dropdown. Model dropdown values are stable endpoint IDs.",
+  "limits": {
+    "timeoutMs": 12000,
+    "maxInputBytes": 262144,
+    "maxResponseBytes": 2097152
+  },
+  "statuses": {
+    "submit": [
+      "in_queue",
+      "in_progress",
+      "completed",
+      "unknown_submission",
+      "failed"
+    ],
+    "refresh": [
+      "in_queue",
+      "in_progress",
+      "succeeded",
+      "result_pending",
+      "failed"
+    ],
+    "catalog": [
+      "models_ready",
+      "failed"
+    ]
+  },
+  "actions": [
+    {
+      "id": "ADB",
+      "name": "Request cancellation",
+      "action": "cancel",
+      "fields": [
+        {
+          "id": "ADC",
+          "name": "endpoint_id",
+          "caption": "Endpoint ID",
+          "editor": "DynamicValue",
+          "value": "text",
+          "optional": false,
+          "doc": "Use the endpoint_id returned by the original submit action.",
+          "rank": 0
+        },
+        {
+          "id": "ADD",
+          "name": "request_id",
+          "caption": "Request ID",
+          "editor": "DynamicValue",
+          "value": "text",
+          "optional": false,
+          "doc": "Use the saved request_id. Authorize access to its owning Generation before calling.",
+          "rank": 1
+        }
+      ],
+      "returns": [
+        {
+          "id": "ADE",
+          "name": "ok",
+          "value": "boolean",
+          "caption": "Success"
+        },
+        {
+          "id": "ADF",
+          "name": "status",
+          "value": "text",
+          "caption": "Status"
+        },
+        {
+          "id": "ADG",
+          "name": "request_id",
+          "value": "text",
+          "caption": "Request ID"
+        },
+        {
+          "id": "ADH",
+          "name": "endpoint_id",
+          "value": "text",
+          "caption": "Endpoint ID"
+        },
+        {
+          "id": "ADI",
+          "name": "error_code",
+          "value": "text",
+          "caption": "Error code"
+        },
+        {
+          "id": "ADJ",
+          "name": "error_message",
+          "value": "text",
+          "caption": "Error message"
+        },
+        {
+          "id": "ADK",
+          "name": "http_status",
+          "value": "number",
+          "caption": "HTTP status"
+        },
+        {
+          "id": "ADL",
+          "name": "retryable",
+          "value": "boolean",
+          "caption": "Read may be retried"
+        },
+        {
+          "id": "ADM",
+          "name": "submission_uncertain",
+          "value": "boolean",
+          "caption": "Submission uncertain"
+        },
+        {
+          "id": "ADN",
+          "name": "retry_after_seconds",
+          "value": "number",
+          "caption": "Suggested retry delay"
+        },
+        {
+          "id": "ADO",
+          "name": "status_url",
+          "value": "text",
+          "caption": "Status URL"
+        },
+        {
+          "id": "ADP",
+          "name": "response_url",
+          "value": "text",
+          "caption": "Result URL"
+        },
+        {
+          "id": "ADQ",
+          "name": "cancel_url",
+          "value": "text",
+          "caption": "Cancel URL"
+        }
+      ]
+    },
+    {
+      "id": "ADR",
+      "name": "Check SDK setup",
+      "action": "check_setup",
+      "fields": [],
+      "returns": [
+        {
+          "id": "ADS",
+          "name": "ok",
+          "value": "boolean",
+          "caption": "SDK loaded"
+        },
+        {
+          "id": "ADT",
+          "name": "status",
+          "value": "text",
+          "caption": "Status"
+        },
+        {
+          "id": "ADU",
+          "name": "sdk_version",
+          "value": "text",
+          "caption": "SDK version"
+        },
+        {
+          "id": "ADV",
+          "name": "node_version",
+          "value": "text",
+          "caption": "Node version"
+        },
+        {
+          "id": "ADW",
+          "name": "key_configured",
+          "value": "boolean",
+          "caption": "Key configured"
+        },
+        {
+          "id": "ADX",
+          "name": "error_code",
+          "value": "text",
+          "caption": "Error code"
+        },
+        {
+          "id": "ADY",
+          "name": "error_message",
+          "value": "text",
+          "caption": "Error message"
+        }
+      ]
+    },
+    {
+      "id": "ADZ",
+      "name": "Search models",
+      "action": "search_models",
+      "fields": [
+        {
+          "id": "AEA",
+          "name": "query",
+          "caption": "Search query",
+          "editor": "DynamicValue",
+          "value": "text",
+          "optional": true,
+          "doc": "Model name or description. Leave blank to browse the active catalog.",
+          "rank": 0
+        },
+        {
+          "id": "AEB",
+          "name": "category",
+          "caption": "Category",
+          "editor": "DynamicValue",
+          "value": "text",
+          "optional": true,
+          "doc": "Optional fal category such as text-to-image, image-to-video or text-to-speech.",
+          "rank": 1
+        },
+        {
+          "id": "AEC",
+          "name": "cursor",
+          "caption": "Next page cursor",
+          "editor": "DynamicValue",
+          "value": "text",
+          "optional": true,
+          "doc": "Use Next page cursor from the previous response. Never retrieve every page on each page load.",
+          "rank": 2
+        },
+        {
+          "id": "AED",
+          "name": "limit",
+          "caption": "Page size",
+          "editor": "DynamicValue",
+          "value": "number",
+          "optional": true,
+          "doc": "Default 20; maximum 100.",
+          "rank": 3
+        },
+        {
+          "id": "AEE",
+          "name": "endpoint_id",
+          "caption": "Exact endpoint ID",
+          "editor": "DynamicValue",
+          "value": "text",
+          "optional": true,
+          "doc": "Optional exact model ID; also allows lookup of a previously selected deprecated model.",
+          "rank": 4
+        },
+        {
+          "id": "AEF",
+          "name": "include_schema",
+          "caption": "Include input schema",
+          "editor": "DynamicValue",
+          "value": "boolean",
+          "optional": true,
+          "doc": "Requires one exact endpoint ID. Fetch only when selecting or configuring a model.",
+          "rank": 5
+        }
+      ],
+      "returns": [
+        {
+          "id": "AEG",
+          "name": "ok",
+          "value": "boolean",
+          "caption": "Success"
+        },
+        {
+          "id": "AEH",
+          "name": "status",
+          "value": "text",
+          "caption": "Status"
+        },
+        {
+          "id": "AEI",
+          "name": "error_code",
+          "value": "text",
+          "caption": "Error code"
+        },
+        {
+          "id": "AEJ",
+          "name": "error_message",
+          "value": "text",
+          "caption": "Error message"
+        },
+        {
+          "id": "AEK",
+          "name": "http_status",
+          "value": "number",
+          "caption": "HTTP status"
+        },
+        {
+          "id": "AEL",
+          "name": "retryable",
+          "value": "boolean",
+          "caption": "Read may be retried"
+        },
+        {
+          "id": "AEM",
+          "name": "retry_after_seconds",
+          "value": "number",
+          "caption": "Suggested retry delay"
+        },
+        {
+          "id": "AEN",
+          "name": "endpoint_ids",
+          "value": "text",
+          "caption": "Endpoint IDs",
+          "is_list": true
+        },
+        {
+          "id": "AEO",
+          "name": "display_names",
+          "value": "text",
+          "caption": "Display names",
+          "is_list": true
+        },
+        {
+          "id": "AEP",
+          "name": "categories",
+          "value": "text",
+          "caption": "Categories",
+          "is_list": true
+        },
+        {
+          "id": "AEQ",
+          "name": "model_urls",
+          "value": "text",
+          "caption": "Model documentation URLs",
+          "is_list": true
+        },
+        {
+          "id": "AER",
+          "name": "models_json",
+          "value": "text",
+          "caption": "Models JSON"
+        },
+        {
+          "id": "AES",
+          "name": "schema_json",
+          "value": "text",
+          "caption": "Model schema JSON"
+        },
+        {
+          "id": "AET",
+          "name": "has_more",
+          "value": "boolean",
+          "caption": "More models available"
+        },
+        {
+          "id": "AEU",
+          "name": "next_cursor",
+          "value": "text",
+          "caption": "Next page cursor"
+        }
+      ]
+    },
+    {
+      "id": "AEV",
+      "name": "Run AI model",
+      "action": "run_model",
+      "fields": [
+        {
+          "id": "AEW",
+          "name": "model",
+          "caption": "Model",
+          "editor": "Dropdown",
+          "rank": 0,
+          "options_note": "Static catalog intentionally omitted. Resolve a current endpoint and use endpoint_id."
+        },
+        {
+          "id": "AEX",
+          "name": "endpoint_id",
+          "caption": "Dynamic endpoint ID",
+          "editor": "DynamicValue",
+          "value": "text",
+          "optional": true,
+          "doc": "A nonempty dynamic endpoint overrides the Model dropdown. Use an authorized enabled model ID, not a URL.",
+          "rank": 1
+        },
+        {
+          "id": "AEY",
+          "name": "input_json",
+          "caption": "Model input JSON",
+          "editor": "DynamicValue",
+          "value": "text",
+          "optional": false,
+          "doc": "Bind Model Settings input_json. Each model has its own schema. Maximum 256 KiB; public HTTPS media URLs.",
+          "long_text": true,
+          "rank": 2
+        },
+        {
+          "id": "AEZ",
+          "name": "schema_json",
+          "caption": "Model schema JSON",
+          "editor": "DynamicValue",
+          "value": "text",
+          "optional": true,
+          "doc": "Optional selected model schema from Search models. Validated on the server; this is not an authorization or spending policy.",
+          "long_text": true,
+          "rank": 3
+        }
+      ],
+      "returns": [
+        {
+          "id": "AFA",
+          "name": "ok",
+          "value": "boolean",
+          "caption": "Success"
+        },
+        {
+          "id": "AFB",
+          "name": "status",
+          "value": "text",
+          "caption": "Status"
+        },
+        {
+          "id": "AFC",
+          "name": "request_id",
+          "value": "text",
+          "caption": "Request ID"
+        },
+        {
+          "id": "AFD",
+          "name": "endpoint_id",
+          "value": "text",
+          "caption": "Endpoint ID"
+        },
+        {
+          "id": "AFE",
+          "name": "error_code",
+          "value": "text",
+          "caption": "Error code"
+        },
+        {
+          "id": "AFF",
+          "name": "error_message",
+          "value": "text",
+          "caption": "Error message"
+        },
+        {
+          "id": "AFG",
+          "name": "http_status",
+          "value": "number",
+          "caption": "HTTP status"
+        },
+        {
+          "id": "AFH",
+          "name": "retryable",
+          "value": "boolean",
+          "caption": "Read may be retried"
+        },
+        {
+          "id": "AFI",
+          "name": "submission_uncertain",
+          "value": "boolean",
+          "caption": "Submission uncertain"
+        },
+        {
+          "id": "AFJ",
+          "name": "retry_after_seconds",
+          "value": "number",
+          "caption": "Suggested retry delay"
+        },
+        {
+          "id": "AFK",
+          "name": "status_url",
+          "value": "text",
+          "caption": "Status URL"
+        },
+        {
+          "id": "AFL",
+          "name": "response_url",
+          "value": "text",
+          "caption": "Result URL"
+        },
+        {
+          "id": "AFM",
+          "name": "cancel_url",
+          "value": "text",
+          "caption": "Cancel URL"
+        }
+      ]
+    },
+    {
+      "id": "AFN",
+      "name": "Refresh AI job",
+      "action": "refresh_job",
+      "fields": [
+        {
+          "id": "AFO",
+          "name": "endpoint_id",
+          "caption": "Endpoint ID",
+          "editor": "DynamicValue",
+          "value": "text",
+          "optional": false,
+          "doc": "Use the endpoint_id returned by the original submit action.",
+          "rank": 0
+        },
+        {
+          "id": "AFP",
+          "name": "request_id",
+          "caption": "Request ID",
+          "editor": "DynamicValue",
+          "value": "text",
+          "optional": false,
+          "doc": "Use the saved request_id. Authorize access to its owning Generation before calling.",
+          "rank": 1
+        },
+        {
+          "id": "AFQ",
+          "name": "result_only",
+          "caption": "Read result only",
+          "editor": "DynamicValue",
+          "value": "boolean",
+          "optional": true,
+          "doc": "Default no. Set yes only when the saved job is already known completed and result retrieval needs retrying. Never regenerate to retrieve a result.",
+          "rank": 2
+        }
+      ],
+      "returns": [
+        {
+          "id": "AFR",
+          "name": "ok",
+          "value": "boolean",
+          "caption": "Success"
+        },
+        {
+          "id": "AFS",
+          "name": "status",
+          "value": "text",
+          "caption": "Status"
+        },
+        {
+          "id": "AFT",
+          "name": "request_id",
+          "value": "text",
+          "caption": "Request ID"
+        },
+        {
+          "id": "AFU",
+          "name": "endpoint_id",
+          "value": "text",
+          "caption": "Endpoint ID"
+        },
+        {
+          "id": "AFV",
+          "name": "error_code",
+          "value": "text",
+          "caption": "Error code"
+        },
+        {
+          "id": "AFW",
+          "name": "error_message",
+          "value": "text",
+          "caption": "Error message"
+        },
+        {
+          "id": "AFX",
+          "name": "http_status",
+          "value": "number",
+          "caption": "HTTP status"
+        },
+        {
+          "id": "AFY",
+          "name": "retryable",
+          "value": "boolean",
+          "caption": "Read may be retried"
+        },
+        {
+          "id": "AFZ",
+          "name": "submission_uncertain",
+          "value": "boolean",
+          "caption": "Submission uncertain"
+        },
+        {
+          "id": "AGA",
+          "name": "retry_after_seconds",
+          "value": "number",
+          "caption": "Suggested retry delay"
+        },
+        {
+          "id": "AGB",
+          "name": "status_url",
+          "value": "text",
+          "caption": "Status URL"
+        },
+        {
+          "id": "AGC",
+          "name": "response_url",
+          "value": "text",
+          "caption": "Result URL"
+        },
+        {
+          "id": "AGD",
+          "name": "cancel_url",
+          "value": "text",
+          "caption": "Cancel URL"
+        },
+        {
+          "id": "AGE",
+          "name": "queue_status",
+          "value": "text",
+          "caption": "Queue status"
+        },
+        {
+          "id": "AGF",
+          "name": "result_ready",
+          "value": "boolean",
+          "caption": "Result ready"
+        },
+        {
+          "id": "AGG",
+          "name": "image",
+          "value": "image",
+          "caption": "First image"
+        },
+        {
+          "id": "AGH",
+          "name": "images",
+          "value": "image",
+          "caption": "Images",
+          "is_list": true
+        },
+        {
+          "id": "AGI",
+          "name": "image_urls",
+          "value": "text",
+          "caption": "Image URLs",
+          "is_list": true
+        },
+        {
+          "id": "AGJ",
+          "name": "video",
+          "value": "file",
+          "caption": "First video"
+        },
+        {
+          "id": "AGK",
+          "name": "videos",
+          "value": "file",
+          "caption": "Videos",
+          "is_list": true
+        },
+        {
+          "id": "AGL",
+          "name": "audio",
+          "value": "file",
+          "caption": "First audio"
+        },
+        {
+          "id": "AGM",
+          "name": "audios",
+          "value": "file",
+          "caption": "Audio files",
+          "is_list": true
+        },
+        {
+          "id": "AGN",
+          "name": "files",
+          "value": "file",
+          "caption": "All media files",
+          "is_list": true
+        },
+        {
+          "id": "AGO",
+          "name": "media_count",
+          "value": "number",
+          "caption": "Media count"
+        },
+        {
+          "id": "AGP",
+          "name": "media_json",
+          "value": "text",
+          "caption": "Media manifest JSON"
+        },
+        {
+          "id": "AGQ",
+          "name": "text",
+          "value": "text",
+          "caption": "Text output"
+        },
+        {
+          "id": "AGR",
+          "name": "output_json",
+          "value": "text",
+          "caption": "Output JSON"
+        }
+      ]
+    }
+  ],
+  "elements": [
+    {
+      "id": "ACD",
+      "name": "Model Settings",
+      "fields": {
+        "ZAA": {
+          "name": "endpoint_id",
+          "caption": "Model endpoint ID",
+          "value": "text",
+          "optional": false,
+          "doc": "Selected model endpoint from Search models. Bind it to the same selected model as Schema JSON.",
+          "editor": "DynamicValue",
+          "rank": 0
+        },
+        "ZAB": {
+          "name": "schema_json",
+          "caption": "Model schema JSON",
+          "value": "text",
+          "optional": false,
+          "doc": "OpenAPI JSON returned by Search models with schema expansion, or a JSON input schema. Controls adapt when this changes.",
+          "editor": "DynamicValue",
+          "rank": 1
+        },
+        "ZAC": {
+          "name": "initial_input_json",
+          "caption": "Initial inputs JSON",
+          "value": "text",
+          "optional": true,
+          "doc": "Optional saved inputs to restore. Do not bind this property to this element's own input_json state; that would overwrite typing or create a circular dependency.",
+          "editor": "DynamicValue",
+          "rank": 2
+        },
+        "ZAD": {
+          "name": "media_field_path",
+          "caption": "External file field path",
+          "value": "text",
+          "optional": true,
+          "doc": "Optional JSON pointer for a Bubble uploader URL, such as /image_url or /reference_images/0. Keep blank to use the built-in upload controls.",
+          "editor": "DynamicValue",
+          "rank": 3
+        },
+        "ZAE": {
+          "name": "media_url",
+          "caption": "External Bubble file URL",
+          "value": "text",
+          "optional": true,
+          "doc": "Optional public HTTPS file URL from a Bubble uploader. Paired with External file field path. Private file access needs an authorized transfer; no private-file compatibility is claimed.",
+          "editor": "DynamicValue",
+          "rank": 4
+        },
+        "ZAF": {
+          "name": "submit_label",
+          "caption": "Generate button label",
+          "value": "text",
+          "optional": true,
+          "doc": "Defaults to Generate.",
+          "editor": "DynamicValue",
+          "rank": 5
+        },
+        "ZAG": {
+          "name": "show_submit_button",
+          "caption": "Show Generate button",
+          "value": "boolean",
+          "optional": true,
+          "default": true,
+          "editor": "DynamicValue",
+          "rank": 6,
+          "default_val": true
+        },
+        "ZAH": {
+          "name": "show_advanced",
+          "caption": "Expand advanced settings",
+          "value": "boolean",
+          "optional": true,
+          "default": false,
+          "editor": "DynamicValue",
+          "rank": 7,
+          "default_val": false
+        },
+        "ZAI": {
+          "name": "disabled",
+          "caption": "Disable inputs",
+          "value": "boolean",
+          "optional": true,
+          "default": false,
+          "editor": "DynamicValue",
+          "rank": 8,
+          "default_val": false
+        },
+        "ZAJ": {
+          "name": "watch_job_id",
+          "caption": "Job to refresh automatically",
+          "value": "text",
+          "optional": true,
+          "doc": "Authorized saved job ID. This element only requests workflow refreshes; it never calls fal itself.",
+          "editor": "DynamicValue",
+          "rank": 9
+        },
+        "ZAK": {
+          "name": "watch_enabled",
+          "caption": "Enable active job refresh",
+          "value": "boolean",
+          "optional": true,
+          "default": false,
+          "doc": "Enable only while the owned saved job has a request ID and is pending or awaiting its result. Disable for completed, failed or uncertain jobs. Maximum 20 checks or five minutes.",
+          "editor": "DynamicValue",
+          "rank": 10,
+          "default_val": false
+        },
+        "ZAL": {
+          "name": "watch_busy",
+          "caption": "Job workflow is busy",
+          "value": "boolean",
+          "optional": true,
+          "default": false,
+          "doc": "Bind to the same busy state used by the refresh workflow. Set busy before work and clear it after work. Busy blocks checks but does not replace the correlated acknowledgment.",
+          "editor": "DynamicValue",
+          "rank": 11,
+          "default_val": false
+        },
+        "ZAM": {
+          "name": "simple_mode",
+          "caption": "Show prompt first",
+          "value": "boolean",
+          "optional": true,
+          "default": false,
+          "doc": "Keep prompt/text controls visible and put other model inputs under Advanced settings. All preset values are retained and validated.",
+          "editor": "DynamicValue",
+          "rank": 12,
+          "default_val": false
+        },
+        "ZAN": {
+          "name": "watch_ack",
+          "caption": "Completed refresh acknowledgment",
+          "value": "text",
+          "optional": true,
+          "doc": "For automatic refresh: capture this element's Refresh request token as a workflow parameter when Refresh requested fires. After the workflow finishes, echo that captured token here and clear busy. Never read the current token at completion. Missing or mismatched acknowledgment pauses after 30 seconds; keep a manual refresh fallback.",
+          "editor": "DynamicValue",
+          "rank": 13
+        },
+        "ZAO": {
+          "name": "submit_disabled",
+          "caption": "Disable Generate button",
+          "value": "boolean",
+          "optional": true,
+          "default": false,
+          "doc": "Disable generation while keeping prompt and settings editable, for example until an authorized user signs in. App workflows must enforce authorization separately.",
+          "editor": "DynamicValue",
+          "rank": 14,
+          "default_val": false
+        },
+        "ZAP": {
+          "name": "model_choices_json",
+          "caption": "Optional model choices JSON",
+          "value": "text",
+          "optional": true,
+          "doc": "Optional array of compatible models: {endpoint_id,label,schema_json,defaults?}. Shows a collapsed model selector. When Model selected fires, commit Selected model endpoint, Selected model schema and Selected model inputs together to this element's endpoint/schema/initial-input properties. The prompt is preserved, other inputs reset to the new model defaults. Selection never generates media.",
+          "editor": "DynamicValue",
+          "rank": 15
+        }
+      },
+      "states": {
+        "ACE": {
+          "name": "input_json",
+          "caption": "Model input JSON",
+          "value": "text"
+        },
+        "ZBB": {
+          "name": "is_valid",
+          "caption": "Inputs are valid",
+          "value": "boolean"
+        },
+        "ZBC": {
+          "name": "validation_errors",
+          "caption": "Validation errors JSON",
+          "value": "text"
+        },
+        "ZBD": {
+          "name": "endpoint_id",
+          "caption": "Selected endpoint ID",
+          "value": "text"
+        },
+        "ZBE": {
+          "name": "saved_file",
+          "caption": "Saved Bubble file",
+          "value": "file"
+        },
+        "ZBF": {
+          "name": "saved_source_url",
+          "caption": "Original source URL",
+          "value": "text"
+        },
+        "ZBG": {
+          "name": "save_job_id",
+          "caption": "Saved job ID",
+          "value": "text"
+        },
+        "ZBH": {
+          "name": "save_status",
+          "caption": "File save status",
+          "value": "text"
+        },
+        "ZBI": {
+          "name": "save_progress",
+          "caption": "File save progress",
+          "value": "number"
+        },
+        "ZBJ": {
+          "name": "save_error",
+          "caption": "File save error code",
+          "value": "text"
+        },
+        "ZBK": {
+          "name": "save_uncertain",
+          "caption": "File save uncertain",
+          "value": "boolean"
+        },
+        "ZBL": {
+          "name": "watch_status",
+          "caption": "Automatic refresh status",
+          "value": "text"
+        },
+        "ZBM": {
+          "name": "watch_request_token",
+          "caption": "Refresh request token",
+          "value": "text"
+        },
+        "ZBN": {
+          "name": "selected_endpoint_id",
+          "caption": "Selected model endpoint",
+          "value": "text"
+        },
+        "ZBO": {
+          "name": "selected_schema_json",
+          "caption": "Selected model schema",
+          "value": "text"
+        },
+        "ZBP": {
+          "name": "selected_input_json",
+          "caption": "Selected model inputs",
+          "value": "text"
+        }
+      },
+      "events": {
+        "ACF": {
+          "name": "submit",
+          "caption": "Generate requested"
+        },
+        "ZCA": {
+          "name": "file_saved",
+          "caption": "Generated file saved"
+        },
+        "ZCB": {
+          "name": "file_save_failed",
+          "caption": "Generated file save failed"
+        },
+        "ZCC": {
+          "name": "refresh_requested",
+          "caption": "Refresh requested"
+        },
+        "ZCD": {
+          "name": "model_selected",
+          "caption": "Model selected"
+        }
+      },
+      "actions": {
+        "ZDA": {
+          "caption": "Validate and generate"
+        },
+        "ACG": {
+          "caption": "Save generated file",
+          "doc": "Copy a public generated file through Bubble native browser upload. Enable File uploads and configure Max file size on this element. Completion fires Generated file saved. Keep the page open; this is not a backend transfer. Authorize the job before calling and persist the returned file only when Saved job ID matches. No private-file storage claim.",
+          "fields": {
+            "ZEA": {
+              "name": "source_url",
+              "caption": "Generated file URL",
+              "editor": "DynamicValue",
+              "value": "text",
+              "rank": 0
+            },
+            "ZEB": {
+              "name": "job_id",
+              "caption": "Authorized saved job ID",
+              "editor": "DynamicValue",
+              "value": "text",
+              "rank": 1
+            },
+            "ZEC": {
+              "name": "filename",
+              "caption": "File name",
+              "editor": "DynamicValue",
+              "value": "text",
+              "optional": true,
+              "rank": 2
+            },
+            "ZED": {
+              "name": "max_download_mb",
+              "caption": "Download limit MB",
+              "editor": "DynamicValue",
+              "value": "number",
+              "optional": true,
+              "rank": 3,
+              "doc": "Default 128 MB; maximum 256 MB. Native element upload settings may impose a lower limit."
+            }
+          }
+        }
+      }
+    }
+  ],
+  "binding_note": "Contract IDs identify this plugin build. Discover MCP action names, property schema and installed runtime bindings in the target app. This file is not an MCP write payload."
+}

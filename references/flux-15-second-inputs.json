@@ -1,0 +1,75 @@
+{
+  "model": "blackforestlabs/flux-3-max/image-to-video",
+  "input": {
+    "image_url": "https://eb5440aa38b3699aeb0dfa3b06d2198e.cdn.bubble.io/f1794947935704x147251021077931420/Last-One-Standing-Poster.jpg",
+    "end_image_url": "https://eb5440aa38b3699aeb0dfa3b06d2198e.cdn.bubble.io/f1794940082026x226337063916927970/fallen-brands-pool.jpg",
+    "aspect_ratio": "16:9",
+    "duration": 15,
+    "resolution": "720p",
+    "reasoning_level": "high",
+    "generate_audio": true,
+    "prompt": "One continuous live-action take with a living, visibly shaken actress, normal-speed performance. The actress draws a sharp breath through parted lips: her ribs expand and her shoulders rise towards her ears beneath her loose black jacket. She exhales through her mouth; both shoulders drop, jacket lapels settle and her knife hand trembles. She takes two more deep breaths with a different rhythm; her eyes flick up to the camera, she swallows and blinks. The actor's torso changes shape as she breathes throughout the shot. The lowered blood-streaked prop knife stays visible in her hand alongside her thigh. Her feet remain planted. The camera is on a real dolly steadily tracking backward and gently craning upward, initially slowly enough to clearly see the first breath. Keep the five fixed signs and one shared pool of dark red stage blood arranged as in the final reference. Preserve the five exact labels: Higgsfield, OpenArt, Runway, Pika, Luma. Reach the readable wide composition by second twelve, drift a little farther back until the end while she is still breathing. One lens, unbroken perspective, live body and cloth movement from beginning to end. Low cello beneath the audible breaths. No speech."
+  },
+  "sources": [
+    {
+      "name": "Last One Standing opening poster",
+      "role": "first frame",
+      "input_field": "image_url",
+      "url": "https://eb5440aa38b3699aeb0dfa3b06d2198e.cdn.bubble.io/f1794947935704x147251021077931420/Last-One-Standing-Poster.jpg"
+    },
+    {
+      "name": "Approved fallen-signs wide artwork",
+      "role": "last frame",
+      "input_field": "end_image_url",
+      "url": "https://eb5440aa38b3699aeb0dfa3b06d2198e.cdn.bubble.io/f1794940082026x226337063916927970/fallen-brands-pool.jpg"
+    }
+  ],
+  "native_result": {
+    "url": "https://v3b.fal.media/files/b/0ab2f241/-z1FDsJ0Ht8_VOyXQuH4e_alligator.mp4",
+    "observed_seed": 1052570381,
+    "decoded_frames": 361,
+    "duration_seconds_rounded": 15.04,
+    "width": 1280,
+    "height": 704,
+    "fps": 24
+  },
+  "finishing": {
+    "video": "Remove only the first source video frame; retain remaining sequence in original order at normal speed.",
+    "audio": "Raise native mono soundtrack by 10 dB.",
+    "final_duration_seconds": 15,
+    "final_video_frames": 360,
+    "playback_speed_ratio": 1,
+    "picture_reversal": false,
+    "still_animation": false,
+    "face_compositing": false,
+    "stitched_clips": false
+  },
+  "finished_file": {
+    "filename": "Last-One-Standing-FLUX-15s.mp4",
+    "bytes": 8971707,
+    "sha256": "ea5d4ec45b191816e62dd9c6a2349e9703000c9694483acc58fc779b000ce076",
+    "url": "https://eb5440aa38b3699aeb0dfa3b06d2198e.cdn.bubble.io/f1794996575690x415569682279433300/Last-One-Standing-FLUX-15s.mp4"
+  },
+  "observed_qa": {
+    "duration_seconds": 15,
+    "width": 1280,
+    "height": 704,
+    "fps": 24,
+    "native_mono_audio": true,
+    "mean_audio_db": -24.9,
+    "peak_audio_db": -9.0,
+    "whole_subject_motion": true,
+    "clearest_shoulder_breathing_seconds": [
+      4,
+      5.5
+    ],
+    "knife_in_hand": true,
+    "knife_tip_briefly_cropped_later": true,
+    "bloodied_knife_and_pool_obvious_at_opening": true,
+    "all_five_names_correct_in_final_approximately_seconds": 5,
+    "camera": "Continuous with acceleration near 10 seconds; no apparent cut.",
+    "user_visual_signoff": "not asserted"
+  },
+  "poster_url": "https://eb5440aa38b3699aeb0dfa3b06d2198e.cdn.bubble.io/f1794996578607x544861900337411300/Last-One-Standing-FLUX-Poster.jpg",
+  "timeline_url": "https://eb5440aa38b3699aeb0dfa3b06d2198e.cdn.bubble.io/f1794996960001x348953365241079400/Last-One-Standing-FLUX-Timeline.jpg"
+}
