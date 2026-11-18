@@ -10,7 +10,7 @@ Use an AI assistant and Bubble MCP to add image, video or audio generation to an
 
 Download the repository from **Code → Download ZIP** or clone it. Give your assistant the folder, or attach the relevant Markdown guides and ask it to read the root skill. Connect Bubble MCP to an account with editor access. Connect fal separately in ChatGPT if you want to prototype there. The running Bubble app uses its own server-side key. [Skill](SKILL.md) · [Bubble setup and first integration](docs/bubble-integration.md) · [fal key setup](docs/fal-setup.md)
 
-**Install the free web plugin.** The Wise Bubbler published **Generative Media with fal AI v1.0.0** under MIT on November 18, 2026. Choose your app on the marketplace listing, install the plugin, then add your own fal key in the private plugin settings. fal bills your account for generation. [Install on Bubble](https://bubble.io/plugin/generative-media-with-fal-ai-1789043147994x526977149156458500) · [Set up the key](docs/fal-setup.md)
+**Install the free web plugin.** The Wise Bubbler published **Generative Media with fal AI v1.0.0** under MIT on November 18, 2026. Sign in to Bubble, install the plugin in your app, then enter your own fal key in its private settings. An agent using Bubble MCP can install it by ID `1789043147994x526977149156458500`. fal bills your account for generation. [Install on Bubble](https://bubble.io/plugin/generative-media-with-fal-ai-1789043147994x526977149156458500) · [Set up the key](docs/fal-setup.md)
 
 ## What should the agent read?
 
